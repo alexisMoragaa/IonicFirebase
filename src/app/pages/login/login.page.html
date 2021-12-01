@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <!-- Contenedor formulario -->
+  <div id="container"> 
+
+    <img class="logoDuoc" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Logo_DuocUC.svg/1024px-Logo_DuocUC.svg.png" />
+    <h1 class="logoHome">Control Asistencia DUOC UC </h1>
+
+    <!-- Formulario -->
+    <form [formGroup]="persona" (ngSubmit)= "ingresar()">
+
+      <!-- Elementos + Etiquetas -->
+      <ion-item>
+        <ion-label position="stacked">Nombre usuario:</ion-label>
+        <ion-input minlength="3" required="true" formControlName="usuario"></ion-input>    
+        <ion-label mode="ios" position="stacked" color="danger" *ngIf="persona.controls.usuario.errors?.required && (persona.touched || persona.dirty)">Ingrese un nombre de usuario</ion-label>
+        <ion-label mode="ios" position="stacked" color="danger" *ngIf="persona.controls.usuario.errors?.minlength && (persona.touched || persona.dirty)">Ingrese al menos 4 caracteres.</ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Contraseña:</ion-label>
+        <ion-input minlength="3" required="true" type="password" formControlName="clave"></ion-input>      
+        <ion-label mode="ios" position="stacked" color="danger" *ngIf="persona.controls.clave.errors?.required && (persona.touched || persona.dirty)">Ingrese una contraseña</ion-label>  
+        <ion-label mode="ios" position="stacked" color="danger" *ngIf="persona.controls.clave.errors?.minlength && (persona.touched || persona.dirty)">Ingrese al menos 8 caracteres.</ion-label>
+      </ion-item>
+      
+      <ion-button  class="btnInicioSesion" color="success" expand="block" type="submit"  [disabled]="!persona.valid">Iniciar sesión</ion-button>
+    </form>
+
+    <!-- <ion-button  class="btnInicioSesion" color="primary" expand="block" type="button" routerLink= "/pagina4" >Registrar Usuario</ion-button> -->
+
+    <ion-text color="danger" >
+      <a class ="linkPassword" routerLink="/pagina6"> Olvidé mi contraseña </a> 
+    </ion-text>
+
+
+
+  </div>
+
+</ion-content>

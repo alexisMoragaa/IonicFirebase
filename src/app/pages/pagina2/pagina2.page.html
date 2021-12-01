@@ -1,0 +1,65 @@
+<!--
+
+  Página 2 | Docente
+  Página que será desplegada al usuario tipo docente.
+
+  Funcionalidades:
+   - Mostrar mensaje de bienvenida.                           ✔
+   - Presentar botón o enlace a página de generar-qr.         ✔
+   - Presentar botón o enlace de cierre de sesión.            ✔
+   - Mostrar avatar de usuario.                               ✔
+   - Añadir notificación de cierre de sesión.                 ✔
+
+-->
+
+<!-- Header página -->
+<ion-header>
+  <ion-toolbar>
+    <ion-title>RegistrAPP</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<!-- Contenido página -->
+<ion-content>
+
+  <!-- Bloque usuario -->
+  <div class="blockUser">
+
+    <!-- Texto bienvenida -->
+    <ion-text class="textoBienvenida">
+      <h3>¡Bienvenido/a, docente!</h3>
+    </ion-text>  
+
+    <!-- Avatar usuario -->
+    <ion-avatar class="avatarUser">
+      <img src="https://i.pinimg.com/474x/69/63/31/696331a2108a3075eb08b46dcbfdcb47.jpg">
+    </ion-avatar>
+
+  </div>
+
+  <!-- Bloque acciones user -->
+  <div>
+
+    <ion-item detail="false" button (click)="crearNotificacionQR()" routerLink="/generar-qr">
+      <ion-label>
+        Generar código QR
+      </ion-label>
+      <ion-icon name="qr-code-outline"></ion-icon>
+    </ion-item>
+
+</div>
+
+<div>
+<br>
+  
+  <ion-item detail="false" (click)="logout()" button >
+    <ion-label class="txtCenter" color="danger">
+      Cerrar sesión
+    </ion-label>
+  </ion-item>
+
+</div>
+
+
+</ion-content>
+

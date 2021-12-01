@@ -1,0 +1,70 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button
+          text="">
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title>RegistrAPP</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+
+
+
+  <!-- Bloque usuario -->
+  <div class="blockUser">
+
+    <!-- Texto bienvenida -->
+    <ion-text class="textoBienvenida">
+        <!--/ Obtiene la variable usuarios contenida dentro del arreglo usuarios logeados el cual contiene el ultimo usuario registrado en localstorage -->
+      <h3>Lista de usuarios</h3>
+    </ion-text>  
+
+  </div>
+
+
+  <ion-list *ngFor="let usuario of listaUsuarios">
+    
+      <ion-card>
+        <ion-item >
+          <ion-label > Rut: {{usuario.rut}} </ion-label>
+        </ion-item>
+        <ion-item >
+          <ion-label >  Nombre: {{usuario.nombre}}</ion-label>
+        </ion-item>
+        <ion-item >
+          <ion-label >  Email: {{usuario.correo}}</ion-label>
+        </ion-item>
+        <ion-item >
+          <ion-label >  Edad: {{usuario.edad}}</ion-label>
+        </ion-item>
+        <ion-item >
+          <ion-label >  Tipo Usuario: {{usuario.tipoUsuario}} </ion-label>
+        </ion-item>
+        <ion-item >
+          <ion-label >  Contraseña: ********** </ion-label>
+        </ion-item>
+
+        <ion-item >
+          <ion-label>Acciones:
+            
+            <ion-button color="warning" (click)="editUser(usuario.id)"  >
+              <ion-icon  name="pencil-outline"></ion-icon>  
+            </ion-button>
+
+
+            
+            <ion-button color="danger" (click)="deleteUser(usuario.id)">
+              <ion-icon class="alert alert-danger" name="trash-outline"></ion-icon>
+            </ion-button>
+          </ion-label>
+        </ion-item>
+
+      </ion-card>
+  
+    <hr>
+  </ion-list>
+</ion-content>

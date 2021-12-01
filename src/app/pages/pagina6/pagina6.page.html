@@ -1,0 +1,44 @@
+<!--
+
+  Página 6 | Recuperar contraseña
+  Página que será desplegada a los usuarios para
+  recuperar su contraseña sin haber iniciado sesión.
+
+-->
+
+<!-- Header página -->
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button
+          text="">
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title>Olvidé mi contraseña</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<!-- Contenido página -->
+<ion-content>
+
+  <!-- Contenedor formulario -->
+  <div id="container"> 
+    <ion-icon class="icono" name="key-outline"></ion-icon>
+    <p class="logoHome">Restablecer contraseña olvidada</p>
+
+    <!-- Formulario -->
+    <form [formGroup]="mail"(ngSubmit)= "changePass()">
+
+      <!-- Elementos + Etiquetas -->
+      <ion-item>
+        <ion-label position="stacked">Correo electrónico: </ion-label>
+        <ion-input formControlName="correo" minlength="3" required="true" ></ion-input>  
+        
+      
+        <ion-label mode="ios" position="stacked" color="danger" *ngIf="mail.controls.correo.errors?.email && (mail.touched || mail.dirty)">Debe ingresar un correo valido.</ion-label>                     
+      </ion-item>
+      <ion-button class="btnRegUser" color="success" expand="block" type="submit"  button   [disabled]="!mail.valid">Restablecer contraseña</ion-button>
+    </form>
+ 
+  </div>
+</ion-content>

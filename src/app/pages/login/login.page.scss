@@ -1,0 +1,57 @@
+#container {
+    text-align: center;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  
+  #container strong {
+    font-size: 20px;
+    line-height: 26px;
+  }
+  
+  #container p {
+    font-size: 16px;
+    line-height: 22px;
+    color: #8c8c8c;
+    margin: 0;
+  }
+  
+  #container a {
+    text-decoration: none;
+  }
+  
+  .btnInicioSesion {
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-top: 30px;
+  }
+  
+  .btnNewUser {
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .logoHome {
+    margin-top: 20px;
+    margin-bottom: 40px;
+  }
+  
+  .txtRecuperarPass {
+    margin-top: 100px;
+  }
+  
+  .linkPassword {
+    color: #eb445a;
+  }
+  
+  .logoDuoc {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 20px;
+    height: 50px;
+  }

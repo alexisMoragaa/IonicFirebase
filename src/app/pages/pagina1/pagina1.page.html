@@ -1,0 +1,73 @@
+<!--
+
+  Página 1 | Alumno
+  Página que será desplegada al usuario tipo alumno.
+
+  Funcionalidades:
+   - Mostrar mensaje de bienvenida con nombre de usuario.     ✔
+   - Presentar botón o enlace a página 3 de escaneo cód QR.   ✔
+   - Presentar botón o enlace de cierre de sesión.            ✔
+   - Mostrar avatar de usuario.                               ✔
+   - Añadir notificación de cierre de sesión.                 ✔
+
+-->
+
+<!-- Header página -->
+<ion-header>
+  <ion-toolbar>
+    <ion-title>RegistrAPP</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<!-- Contenido página -->
+<ion-content>
+
+  <!-- Bloque usuario -->
+  <div class="blockUser">
+
+    <!-- Texto bienvenida -->
+    <ion-text class="textoBienvenida">
+        <!--/ Obtiene la variable usuarios contenida dentro del arreglo usuarios logeados el cual contiene el ultimo usuario registrado en localstorage -->
+      <h3>¡Bienvenido/a {{this.auth.authUser.nombre}}  ! </h3>
+    </ion-text>  
+
+    <!-- Avatar usuario -->
+    <ion-avatar class="avatarUser">
+      <img src="https://i.pinimg.com/474x/39/07/81/3907818eb4b270cc9e8945c8bd450c3b.jpg">
+    </ion-avatar>
+
+  </div>
+
+  <!-- Bloque acciones user -->
+  <div>
+
+    <ion-item detail="false" button routerLink="/pagina3">
+      <ion-label>
+        Escanear código QR
+      </ion-label>
+      <ion-icon name="qr-code-outline"></ion-icon>
+    </ion-item>
+
+    <ion-item detail="false" button (click)="restartPass(this.auth.authUser.rut)">
+      <ion-label>
+        Cambiar contraseña
+      </ion-label>
+      <ion-icon name="key-outline"></ion-icon>
+    </ion-item>
+
+</div>
+
+<div>
+<br>
+  
+  <ion-item detail="false" (click)="logout()" button >
+    <ion-label class="txtCenter" color="danger">
+      Cerrar sesión
+    </ion-label>
+  </ion-item>
+
+</div>
+
+
+</ion-content>
+

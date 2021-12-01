@@ -1,0 +1,62 @@
+<!--
+
+  Página 5 | Cambiar contraseña
+  Página que será desplegada a los usuarios para
+  cambiar su contraseña una vez han iniciado sesión.
+
+  Funcionalidades:
+   - Obtener nombre de usuario con sesión iniciada.           ✔
+   - Mostrar form para cambiar contraseña.                    ✔ 
+   - Actualizar contraseña en LocalStorage.                   ✔ 
+
+
+-->
+
+<!-- Header página -->
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button
+          text="">
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title>Cambiar contraseña</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<!-- Contenido página -->
+<ion-content>
+
+  <!-- Contenedor formulario -->
+  <div id="container"> 
+    <ion-icon class="icono" name="create-outline"></ion-icon>
+    <p class="logoHome">Restablecer contraseña {{username}}</p>
+
+    <!-- Formulario -->
+    <form [formGroup]="persona" (ngSubmit)= "changePass()">
+
+      <!-- Elementos + Etiquetas -->
+      <ion-item>
+        <ion-label position="stacked">Ingrese nueva contraseña:</ion-label>
+        <ion-input formControlName="clave" minlength="8" maxlength="16" required="true" type="password"></ion-input>
+        <ion-label mode="ios" position="stacked" color="danger" *ngIf="persona.controls.clave.errors?.required && (persona.touched || persona.dirty)">Ingrese una contraseña</ion-label>
+        <ion-label mode="ios" position="stacked" color="danger" *ngIf="persona.controls.clave.errors?.minlength && (persona.touched || persona.dirty)">Ingrese al menos 8 dígitos.</ion-label>
+      </ion-item>
+
+
+      <ion-item>
+        <ion-label position="stacked">Confirmar contraseña:</ion-label>
+        <ion-input formControlName="passConfirm" minlength="8"  maxlength="16" required="true" type="password"></ion-input>
+        <ion-label mode="ios" position="stacked" color="danger" *ngIf="persona.controls.passConfirm.errors?.required && (persona.touched || persona.dirty)">Ingrese su contraseña nuevamente</ion-label>
+        <ion-label mode="ios" position="stacked" color="danger" *ngIf="persona.controls.passConfirm.errors?.minlength && (persona.touched || persona.dirty)">Ingrese al menos 8 dígitos.</ion-label>
+      </ion-item>
+
+      <ion-input  formControlName="rut" type="hidden" ></ion-input>   
+      <!-- Se mantiene el usuario con un input de tipo hydden para que este no sea visible al usuario. 
+        este valor es obtenido mediante el usuario conectado mediante el local storage y enviado desde la pagina 1 mediante router navigator -->
+      
+      <ion-button class="btnRegUser" color="success" expand="block" type="submit" [disabled]="!persona.valid">Restablecer contraseña</ion-button>
+    </form>
+ 
+  </div>
+</ion-content>

@@ -1,0 +1,100 @@
+<!--
+
+  Página 4 | Registro usuario
+  Página que será desplegada a los usuarios al presionar el
+  botón "Registrar usuario" de la página home para registrar
+  un nuevo usuario en la app. 
+
+  Funcionalidades:
+   - Desplegar formulario de registro de usuario.           ✔
+   - Registrar usuario nuevo en LocalStorage.               ✔    
+   - Presentar botón o enlace para volver a página home.    ✔
+   - Presentar botón o enlace de registrar usuario.         ✔
+   - Dirigir a página home al registrar un nuevo usuario.   ✔
+   - Mostrar mensaje de usuario registrado exitosamente.    ✔
+
+-->
+
+<!-- Header página -->
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button
+          text="">
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title>Registro</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<!-- Contenido página -->
+<ion-content>
+
+  <!-- Contenedor formulario -->
+  <div id="container">
+    <ion-icon class="icono" name="person-add-outline"></ion-icon>
+    <p class="logoHome">Registro de nuevo usuario</p>
+
+    <!-- Formulario -->
+    <form [formGroup]="formUser" (ngSubmit)= "add()">
+
+      <!-- Elementos + Etiquetas -->
+      <ion-item>
+        <ion-label position="stacked">Rut:</ion-label>
+        <ion-input minlength="7" required="true" formControlName="rut"></ion-input>    
+        <ion-label mode="ios" position="stacked" color="danger" *ngIf="formUser.controls.rut.errors?.required && (formUser.touched || formUser.dirty)">Ingrese el rut del usuario sin puntos ni guion.</ion-label>
+        <ion-label mode="ios" position="stacked" color="danger" *ngIf="formUser.controls.rut.errors?.minlength && (formUser.touched || formUser.dirty)">Ingrese al menos 7 dígitos.</ion-label>
+      </ion-item>
+
+
+      <!-- Elementos + Etiquetas -->
+      <ion-item>
+        <ion-label position="stacked">Nombre usuario:</ion-label>
+        <ion-input minlength="3" required="true" formControlName="usuario"></ion-input>    
+        <ion-label mode="ios" position="stacked" color="danger" *ngIf="formUser.controls.usuario.errors?.required && (formUser.touched || formUser.dirty)">Ingrese un nombre de usuario</ion-label>
+        <ion-label mode="ios" position="stacked" color="danger" *ngIf="formUser.controls.usuario.errors?.minlength && (formUser.touched || formUser.dirty)">Ingrese al menos 3 caracteres.</ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Correo:</ion-label>
+        <ion-input minlength="3" required="true" formControlName="correo"></ion-input>    
+        <ion-label mode="ios" position="stacked" color="danger" *ngIf="formUser.controls.correo.errors?.email && (formUser.touched || formUser.dirty)">Debe ingresar un correo valido.</ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Edad:</ion-label>
+        <ion-input minlength="2" required="true" formControlName="edad"></ion-input>    
+        <ion-label mode="ios" position="stacked" color="danger" *ngIf="formUser.controls.edad.errors?.required && (formUser.touched || formUser.dirty)">Ingrese su edad</ion-label>
+        <ion-label mode="ios" position="stacked" color="danger" *ngIf="formUser.controls.edad.errors?.minlength && (formUser.touched || formUser.dirty)">Ingrese al menos 2 caracteres.</ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Tipo de usuario:</ion-label>
+        <ion-select formControlName="tipoUsuario" placeholder="seleccione tipo de usuario">
+          <ion-select-option value="docente">Docente</ion-select-option>
+          <ion-select-option value="alumno">Alumno</ion-select-option>
+          
+        </ion-select> 
+        <ion-label mode="ios" position="stacked" color="danger" *ngIf="formUser.controls.tipoUsuario.errors?.required && (formUser.touched || formUser.dirty)">Seleccione un tipo de usuario</ion-label>
+      </ion-item>
+
+
+      <ion-item>
+        <ion-label position="stacked">Contraseña:</ion-label>
+        <ion-input minlength="8" maxlength="16" required="true" type="password" formControlName="clave"></ion-input>      
+        <ion-label mode="ios" position="stacked" color="danger" *ngIf="formUser.controls.clave.errors?.required && (formUser.touched || formUser.dirty)">Ingrese una contraseña</ion-label>  
+        <ion-label mode="ios" position="stacked" color="danger" *ngIf="formUser.controls.clave.errors?.minlength && (formUser.touched || formUser.dirty)">Contraseña debe tener minimo 8 hasta 16 caracteres.</ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Confirme Contraseña:</ion-label>
+        <ion-input minlength="8" maxlength="16" required="true" type="password" formControlName="confirmPass"></ion-input>      
+        <ion-label mode="ios" position="stacked" color="danger" *ngIf="formUser.controls.confirmPass.errors?.required && (formUser.touched || formUser.dirty)">Re ingrese su contraseña</ion-label>  
+        <ion-label mode="ios" position="stacked" color="danger" *ngIf="formUser.controls.confirmPass.errors?.minlength && (formUser.touched || formUser.dirty)">Re ingrese su contraseña.</ion-label>
+      </ion-item>
+      
+      <ion-button class="btnRegUser" color="success" expand="block" type="submit"  [disabled]="!formUser.valid">Registrar usuario</ion-button>
+    </form>
+ 
+  </div>
+</ion-content>

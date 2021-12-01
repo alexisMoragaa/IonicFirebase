@@ -1,0 +1,49 @@
+<!--
+
+  Página Generar-QR | Generación de Código QR
+  Página que será desplegada al usuario Docente cuando presione
+  el botón "Generar QR" desde su menú.
+
+  Funcionalidades:
+   - Obtener fecha y hora actual.                                         ✔
+   - Presentar código QR con fecha y hora actual obtenidos.               ✔
+
+-->
+
+<!-- Header página -->
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button
+          text="">
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title>Generar QR</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<!-- Contenido página -->
+<ion-content>
+  <p class="txtQR"> Código QR fecha y hora actual
+
+  <!-- Tarjeta condicional (si existe informacion se mostrará el codigo QR) -->
+  <ion-card *ngIf="qrData" class="qrCode">
+
+    <!-- Header tarjeta -->
+    <ion-card-header>
+      <ion-card-subtitle>{{qrData}}</ion-card-subtitle>
+      <ion-card-title>Código QR</ion-card-title>
+    </ion-card-header>
+
+    <!-- Contenido tarjeta -->
+    <ion-card-content>
+      <ngx-qrcode [elementType]="elementType" [value]="qrData"></ngx-qrcode>
+    </ion-card-content>
+
+  </ion-card>
+
+  <!-- Texto e icono decorativos. -->
+  <p class="txtQR2"> Solicite a sus estudiantes escanear el código QR presentado.
+  <ion-icon class="iconoQR" name="search-circle-outline"></ion-icon>
+
+</ion-content>

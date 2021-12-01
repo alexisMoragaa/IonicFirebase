@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>RegistrAPP</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+
+
+
+  <!-- Bloque usuario -->
+  <div class="blockUser">
+
+    <!-- Texto bienvenida -->
+    <ion-text class="textoBienvenida">
+        <!--/ Obtiene la variable usuarios contenida dentro del arreglo usuarios logeados el cual contiene el ultimo usuario registrado en localstorage -->
+      <h3>¡Bienvenido/a {{this.auth.authUser.nombre}} ! </h3>
+    </ion-text>  
+
+    <!-- Avatar usuario -->
+    <ion-avatar class="avatarUser">
+      <img src="https://i.ytimg.com/vi/UoG8T_3jto8/hqdefault.jpg">
+    </ion-avatar>
+
+  </div>
+
+
+
+    
+  <div class="blockButtons">
+
+    <ion-button  class="btnInicioSesion" color="success" expand="block" type="button" routerLink= "/pagina4" >Registrar Usuario</ion-button>
+    <ion-button  class="btnInicioSesion" color="primary" expand="block" type="button" routerLink= "/lista-usuarios" >Ver Usuarios</ion-button>
+    <ion-button  class="btnInicioSesion" color="warning" expand="block" type="button" routerLink= "/error404" >Test 404</ion-button>
+    <ion-button  class="btnInicioSesion" color="danger" expand="block" type="button" (click)="logout()" >Cerrar Sesion</ion-button>
+  </div>
+
+
+
+</ion-content>
