@@ -29,7 +29,7 @@ export class LoginPage implements OnInit {
               private storage: Storage) { }
 
 
-  
+  valorUf: any;
 
   ngOnInit() {    
     let u: Usuario;
@@ -42,7 +42,8 @@ export class LoginPage implements OnInit {
       edad: "30",
       tipoUsuario: "admin"
     };
-    lista.push(u);
+    lista.push(u)
+    this.apiIndicador();
 
     this.storage.create();
     this.storage.get('usuarios').then ((usuarios: Usuario[])=>{
@@ -83,4 +84,20 @@ export class LoginPage implements OnInit {
       }
     });
   }
+
+  //LLAMADA A UNA API, ESTO ES UNA LLAMADA A UNA API
+  apiIndicador(){
+    fetch('https://mindicador.cl/api/uf')
+    .then(Response => Response.json())
+    .then(data => { 
+      console.log(data)
+      this.valorUf = data.serie[0].valor
+     
+    });
+  }
+
+
+
+
+
 }

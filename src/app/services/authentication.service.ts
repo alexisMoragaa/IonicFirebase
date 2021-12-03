@@ -11,6 +11,7 @@ import { NotificationService } from './notification.service';
 import { DatabaseService } from 'src/app/services/database/database.service';
 import { User } from 'src/app/interfaces/user';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -20,6 +21,7 @@ export class AuthenticationService {
 
   authState = new BehaviorSubject(false);//Creamos una variable para almacenar el estado de la sesion del usuario por defecto inicializa en falso
   authUser:any;
+
   listaUsuarios: User[] = []
 
   constructor(
@@ -31,6 +33,9 @@ export class AuthenticationService {
     private db: DatabaseService
   
   ) { }
+
+
+
 
 
 //crea una notificacion para los accesos correctos a la aplicacion
@@ -71,6 +76,7 @@ export class AuthenticationService {
           //Si el nombre de usuario y la contraseña son correctos establecemos el estado de la sesion en true
           this.authState.next(true);// Establece el valor de la variable authState en true
           this.notificacionIngreso()
+          
           this.redirect()
         }else{
           this.noti.notificacion("Error", "Usuario o contraseña incorrecto");
@@ -132,5 +138,11 @@ export class AuthenticationService {
   }
 
 
+
+
+
+
+
+  
 
 }
